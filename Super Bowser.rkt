@@ -1,0 +1,57 @@
+#lang adventure-mario
+
+(define (my-enemy)
+ (basic-enemy
+  #:sprite toad-sprite
+  #:ai 'easy
+  #:health 50
+  #:amount-in-world 5))
+
+(define (my-enemy2)
+ (basic-enemy
+  #:sprite luigi-sprite
+  #:ai 'medium
+  #:health 150
+  #:night-only? #t
+  #:weapon (fireball)
+  #:amount-in-world 1))
+
+(define (my-enemy3)
+ (curry
+  basic-enemy
+  #:sprite mario-sprite
+  #:ai 'hard
+  #:health 300
+  #:weapon (fireball)
+  #:amount-in-world 1))
+
+(define princess-peach
+ (basic-npc
+  #:name "Princess Peach"
+  #:sprite princesspeach-sprite))
+
+(mario-game
+ #:character (basic-character
+              #:sprite greybigmario-sprite
+              #:speed 15
+              #:health 200)
+ #:intro-cutscene (basic-cutscene
+                   (page
+                    orangebowser-sprite
+                    "Finally I have located princess peach!")
+                   (page
+                    "*travels to Pink City*"))
+ #:game-over-cutscene (basic-cutscene
+                       (page
+                        (set-sprite-angle
+                         90
+                         (render greybigmario-sprite))
+                        "GAME OVER!"))
+ #:enemy-list (list (my-enemy) (my-enemy2) (my-enemy3))
+ #:npc-list (list (basic-npc
+                   #:sprite orangebowser-sprite
+                   #:dialog (list "Capture Princess Peach!")
+                   #:quest-list (list (fetch-quest
+                                        #:item princess-peach
+                                        #:reward-amount 10000))))
+ #:power-list (list (fireball)))
