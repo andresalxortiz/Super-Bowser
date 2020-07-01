@@ -1,2 +1,2 @@
 # Super-Bowser
-Compose a game with a gigantic bowser as the main boss in Racket.
+It's Super Mario, but with a twist... Do you think you can defeat the infamous Super Mario Brothers as the Koopa King??
