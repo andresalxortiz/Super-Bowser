@@ -45,11 +45,11 @@
                        (page
                         (set-sprite-angle
                          90
-                         (render orangebowser-sprite))
+                         (render greybigmario-sprite))
                         "GAME OVER!"))
  #:enemy-list (list (my-enemy) (my-enemy2) (my-enemy3))
  #:npc-list (list (basic-npc
-                   #:sprite goomba-sprite
+                   #:sprite orangebowser-sprite
                    #:dialog (list "Capture Princess Peach!")
                    #:quest-list (list (fetch-quest
                                         #:item princess-peach
